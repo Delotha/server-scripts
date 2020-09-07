@@ -20,6 +20,11 @@ else
 	exit 0
 fi
 
+whoami=$(whoami)
+if [ $whoami != $user ]; then
+	echo "$date-$time: Error: Not running as the correct user ($whoami instead of $whois)" >> /var/log/loudfoot-backup-server-script.log
+fi
+
 for i in "${servers[@]}"
 do
 	if [ ! -e "$basedest/${i}" ]; then
