@@ -6,7 +6,7 @@
 # Variables
 date=$(date +%F)
 time=$(date +%H:%M:%S)
-configfile="/etc/serverscripts/$HOSTNAME.config"
+configfile="/etc/server-scripts/$HOSTNAME.config"
 
 # Update log file that we've started
 echo "$date-$time: Started." >> /tmp/loudfoot-backup-server-script.log
@@ -16,7 +16,7 @@ if [ -e "$configfile" ]; then
 	source "$configfile"
 	sitedest="$dest/sites"
 else
-	echo "$date-$time: Error: Config file not found ($configfile)." >> /tmp/loudfoot-master-backup.log
+	echo "$date-$time: Error: Config file not found ($configfile)." >> /tmp/loudfoot-backup-server-script.log
 	exit 0
 fi
 
