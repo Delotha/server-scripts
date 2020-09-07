@@ -21,13 +21,13 @@ else
 fi
 
 whoami=$(whoami)
-if [ $whoami != $user ]; then
+if [ $whoami != $userdest ]; then
 	echo "$date-$time: Error: Not running as the correct user ($whoami instead of $whois)" >> /tmp/loudfoot-archive-server.log
 fi
 
 for i in "${servers[@]}"
 do
-	src="$user@${i}:$basedest/*"
+	src="$usersrc@${i}:$basesrc/*"
 	dest="$basedest/${i}"
 	if [ ! -e "$dest" ]; then
 		mkdir -p "$dest"
