@@ -27,11 +27,11 @@ fi
 
 for i in "${servers[@]}"
 do
-	if [ ! -e "$basedest/${i}" ]; then
-		mkdir -p "$basedest/${i}"
-	fi
 	src="$user@${i}:$dest"
 	dest="$basedest/${i}"
+	if [ ! -e "$dest" ]; then
+		mkdir -p "$dest"
+	fi
 
 case "$1" in
 	--purge)
