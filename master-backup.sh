@@ -28,6 +28,11 @@ else
 	exit 0
 fi
 
+if [ -z $user ]; then
+	cleanup=$(rm /var/log/loudfoot-master-backup.log)
+	exit 0 # Exiting. This is not a server that gets backed up.
+fi
+
 cd "$includespath" || exit
 for f in *
 do
