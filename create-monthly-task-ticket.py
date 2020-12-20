@@ -13,7 +13,8 @@ hostname = socket.gethostname()
 # Create parser object and read config file
 # TODO: Check if this file exists. Exit immediately if it doesn't.
 config = configparser.RawConfigParser()
-config.read(hostname+'.cfg')
+configfile = '/etc/server-scripts/mantis-create-monthly-ticket-' + hostname + '.cfg'
+print(configfile)
 
 # Loop through all sections (which are company names)
 for company in config.sections():
