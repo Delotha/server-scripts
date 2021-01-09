@@ -48,8 +48,11 @@ for company in config.sections():
 	data = { 'summary': name, 'description': config.get(company, "mantis_monthly_description"), 'category': {'name': config.get(company, "mantis_category")}, 'project': {'name': config.get(company, "mantis_project")} }
 	headers = { 'Authorization': config.get(company, "mantis_token") }
 
-	# Make the actual call
+	# Make the actual call (untested try)
+#	try:
 	response = requests.post(api_url, json=data, headers=headers)
+#	except:
+#		print("An error occured.")
 
 #	Debug stuff 
 #	print(api_url) # DEBUG
