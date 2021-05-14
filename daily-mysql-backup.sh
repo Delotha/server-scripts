@@ -22,7 +22,7 @@ echo "$date-$time: Started." >> /var/log/loudfoot-daily-mysql-backup.log
 # Get the config file
 if [ -e "$configfile" ]; then
 	source "$configfile"
-	dest="/home/$user/backups/daily-mysql/$HOSTNAME-$date-$time"
+	dest="/home/$user/backups-daily-mysql/$HOSTNAME-$date-$time"
 else
 	echo "$date-$time: Error: Config file not found ($configfile)." >> /var/log/loudfoot-daily-mysql-backup.log
 	exit 0
