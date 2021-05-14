@@ -33,6 +33,7 @@ if [ -z $user ]; then
 	exit 0 # Exiting. This is not a server that gets backed up.
 fi
 
+source "$includespath/00-create-folder.sh"
 source "$includespath/mysql.sh"
 
 # If successful, update log file.
