@@ -35,6 +35,7 @@ fi
 
 source "$includespath/00-create-folder.sh"
 source "$includespath/mysql.sh"
+source "$includespath/xx-permissions.sh"
 
 # If successful, update log file.
 echo "$date-$time: Complete." >> /var/log/loudfoot-daily-mysql-backup.log
