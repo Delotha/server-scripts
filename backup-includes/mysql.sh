@@ -41,7 +41,7 @@ if [[ $runme -gt 0 ]]; then
 	done
 
 	# Grab my.cnf file
-	out=$(cp /etc/mysql/my.cnf "$dest"/)
+	tar -cf "$dest"/mysql.conf.d.tar -C / etc/mysql/mysql.conf.d
 
 
 	echo 'Backup MySQL/MariaDB - Done'
