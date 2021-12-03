@@ -33,7 +33,7 @@ fi
 
 for i in "${servers[@]}"
 do
-	src="$usersrc@${i}:$basesrc/*"
+	src="$usersrc@${i}:$basesrc/"
 	dest="$basedest/${i}"
 	if [ ! -e "$dest" ]; then
 		mkdir -p "$dest"
