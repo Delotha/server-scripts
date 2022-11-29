@@ -41,10 +41,10 @@ do
 
 case "$1" in
 	--purge)
-		rsync "$src" "$dest" -rtv --delete-after
+		rsync "$src" "$dest" -rtv --ignore-existing --delete-after
 	;;
 	*)
-		rsync "$src" "$dest" -rt
+		rsync "$src" "$dest" -rt --ignore-existing
 	;;
 esac
 
