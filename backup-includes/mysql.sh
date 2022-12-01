@@ -34,6 +34,8 @@ if [[ $runme -gt 0 ]]; then
 			;;
 		'phpmyadmin')
 			;;
+		'sys')
+			;;
 		*)
 			dump=$(mysqldump "$DB" > "$dest"/$mysql/"$DB.sql";)
 #		echo "Exported: $DB"
