@@ -4,19 +4,19 @@
 # 0 6 * * * /root/server-scripts/backup-server.sh
 
 # Variables
-date=$(date +%F)
-time=$(date +%H:%M:%S)
+startdate=$(date +%F)
+starttime=$(date +%H:%M:%S)
 configfile="/etc/server-scripts/$HOSTNAME.config"
 
 # Update log file that we've started
-echo "$date-$time: Started." >> ~/loudfoot-archive-server.log
+echo "$startdate-$starttime: Started." >> ~/loudfoot-archive-server.log
 
 # Get the config file
 if [ -e "$configfile" ]; then
 	source "$configfile"
 	sitedest="$dest/sites"
 else
-	echo "$date-$time: Error: Config file not found ($configfile)." >> ~/loudfoot-archive-server.log
+	echo "$startdate-$starttime: Error: Config file not found ($configfile)." >> ~/loudfoot-archive-server.log
 	exit 0
 fi
 
@@ -28,7 +28,7 @@ fi
 
 whoami=$(whoami)
 if [ $whoami != $userdest ]; then
-	echo "$date-$time: Error: Not running as the correct user ($whoami instead of $whois)" >> ~/loudfoot-archive-server.log
+	echo "$startdate-$starttime: Error: Not running as the correct user ($whoami instead of $whois)" >> ~/loudfoot-archive-server.log
 fi
 
 for i in "${servers[@]}"
@@ -51,6 +51,8 @@ esac
 done
 
 # Update log file of our success
-echo "$date-$time: Complete." >> ~/loudfoot-archive-server.log
+enddate=$(date +%F)
+endtime=$(date +%H:%M:%S)
+echo "$enddate-$endtime: Complete." >> ~/loudfoot-archive-server.log
 
 exit 0
