@@ -5,8 +5,8 @@
 # 0 0 * * 0,3 cd /root/server-scripts/ && /root/server-scripts/master-backup.sh
 
 if [[ $(id -u) -ne 0 ]] ; then
-	echo "This script needs to be run as root or with sudo. Exiting."
-	exit 1
+    echo "This script needs to be run as root or with sudo. Exiting."
+    exit 1
 fi
 
 # Variables
@@ -21,16 +21,16 @@ echo "$date-$time: Started." >> /var/log/loudfoot-daily-mysql-backup.log
 
 # Get the config file
 if [ -e "$configfile" ]; then
-	source "$configfile"
-	dest="/home/$user/backups/$HOSTNAME-$date-$time-mysql"
+    source "$configfile"
+    dest="/home/$user/backups/$HOSTNAME-$date-$time-mysql"
 else
-	echo "$date-$time: Error: Config file not found ($configfile)." >> /var/log/loudfoot-daily-mysql-backup.log
-	exit 0
+    echo "$date-$time: Error: Config file not found ($configfile)." >> /var/log/loudfoot-daily-mysql-backup.log
+    exit 0
 fi
 
 if [ -z $user ]; then
-	cleanup=$(rm /var/log/loudfoot-daily-mysql-backup.log)
-	exit 0 # Exiting. This is not a server that gets backed up.
+    cleanup=$(rm /var/log/loudfoot-daily-mysql-backup.log)
+    exit 0 # Exiting. This is not a server that gets backed up.
 fi
 
 source "$includespath/00-create-folder.sh"

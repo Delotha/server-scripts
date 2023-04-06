@@ -5,8 +5,8 @@
 # 0 0 * * 0,3 cd /root/server-scripts/ && /root/server-scripts/master-backup.sh
 
 if [[ $(id -u) -ne 0 ]] ; then
-	echo "This script needs to be run as root or with sudo. Exiting."
-	exit 1
+    echo "This script needs to be run as root or with sudo. Exiting."
+    exit 1
 fi
 
 # Variables
@@ -21,25 +21,25 @@ echo "$date-$time: Started." >> /var/log/loudfoot-master-backup.log
 
 # Get the config file
 if [ -e "$configfile" ]; then
-	source "$configfile"
-	sitedest="$dest/sites"
+    source "$configfile"
+    sitedest="$dest/sites"
 else
-	echo "$date-$time: Error: Config file not found ($configfile)." >> /var/log/loudfoot-master-backup.log
-	exit 0
+    echo "$date-$time: Error: Config file not found ($configfile)." >> /var/log/loudfoot-master-backup.log
+    exit 0
 fi
 
 if [ -z $user ]; then
-	cleanup=$(rm /var/log/loudfoot-master-backup.log)
-	exit 0 # Exiting. This is not a server that gets backed up.
+    cleanup=$(rm /var/log/loudfoot-master-backup.log)
+    exit 0 # Exiting. This is not a server that gets backed up.
 fi
 
 cd "$includespath" || exit
 for f in *
 do
-	# Don't try to run the readme file.
-	if [ "$f" != "README.md" ]; then
-		source "$includespath/$f" .
-	fi
+    # Don't try to run the readme file.
+    if [ "$f" != "README.md" ]; then
+        source "$includespath/$f" .
+    fi
 done
 
 # If successful, update log file.

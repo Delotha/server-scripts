@@ -9,22 +9,22 @@ Each script should:
 ## How to Use
 This is how I call it: (fill in the parts in <these brackets> for yourself)
 
-	date=$(date +%F)
-	time=$(date +%H%M%S)
-	user="<username>"
-	dest="<backup-destination-path>/$HOSTNAME-$date-$time-full"
-	
-	# Get list of website users
-	if [ ! -e "./$HOSTNAME/users.sh" ]; then
-		exit 0
-	fi
-	source "./$HOSTNAME/users.sh"
-	sitedest="$dest/sites"
-	
-	includespath=$(find / -name backup-includes | head -1)
-	cd "$includespath"
-	for f in *
-	do
-		cd "$includespath"
-		source "$f" .
-	done
+    date=$(date +%F)
+    time=$(date +%H%M%S)
+    user="<username>"
+    dest="<backup-destination-path>/$HOSTNAME-$date-$time-full"
+    
+    # Get list of website users
+    if [ ! -e "./$HOSTNAME/users.sh" ]; then
+        exit 0
+    fi
+    source "./$HOSTNAME/users.sh"
+    sitedest="$dest/sites"
+    
+    includespath=$(find / -name backup-includes | head -1)
+    cd "$includespath"
+    for f in *
+    do
+        cd "$includespath"
+        source "$f" .
+    done

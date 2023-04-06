@@ -3,12 +3,12 @@
 # Check if ufw is active
 active=$(ufw status | head -1 | grep "active")
 if [[ $active != "" ]]; then
-	##### ufw Back #####
-	echo "Backup ufw - Start"
+    ##### ufw Back #####
+    echo "Backup ufw - Start"
 
-	# Take the backups
-	out=$(ufw status >> $dest/ufw-status.txt)
+    # Take the backups
+    out=$(ufw status >> $dest/ufw-status.txt)
 
-	echo 'Backup ufw - Done'
-	##### ufw Done #####
+    echo 'Backup ufw - Done'
+    ##### ufw Done #####
 fi
