@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # Loudfoot Mantis API Scripts: Create Monthly Tasks ticket for Loudfoot/Delotha
 
-import os
 import datetime
 import requests
 import socket
