@@ -25,10 +25,14 @@ if [ -z $userdest ]; then
     exit 0 # Exiting. This is not a server that gets backed up.
 fi
 
-
 whoami=$(whoami)
 if [ $whoami != $userdest ]; then
     echo "$startdate-$starttime: Error: Not running as the correct user ($whoami instead of $whois)" >> ~/loudfoot-archive-server.log
+fi
+
+if [ ${#servers[@]} -eq 0 ]; then
+    echo "$startdate-$starttime: Error: No servers to backup. Stopping." >> ~/loudfoot-archive-server.log
+    exit 0
 fi
 
 for i in "${servers[@]}"
